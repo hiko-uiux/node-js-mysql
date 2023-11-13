@@ -16,15 +16,16 @@
 4. 必要最低限のファイル構成
    新しいディレクトリ：「view」>「index.ejs」
    新しいファイル：「app.js」
-5. [app.js]に必要最低限のコード
+5. Web サーバー起動用コード[app.js]
 
 ```JavaScript:code
 const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(port, () => console.log(`Server on port ${port}!`));
+
+app.get('/', (req, res) => res.send('Hello World!'));
 ```
 
 6. サーバーを起動する
@@ -44,7 +45,29 @@ app.listen(port, () => console.log(`Server on port ${port}!`));
 
 - Windows：システム環境変数の編集・追加
 - MySQL 新規アカウント(root 以外)を作成し、権限設定をする
+- 練習用データを登録する
 
 2. npm install mysql
 
 - npm install mysql2
+
+3. DB サーバー起動用コード例[app.js]
+
+```JavaScript:code
+const mysql = require("mysql2");
+const con = mysql.createConnection({
+  host: "localhost",
+  user: "xxxuser",
+  password: "xxxx",
+  database: "xxx_db",
+});
+```
+
+4. DB サーバー起動
+
+```JavaScript:code
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected");
+});
+```
