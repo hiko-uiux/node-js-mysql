@@ -1,0 +1,5 @@
+# .gitignore
+node_modules/
+view/
+.env
+test_Nodejs.sql
